@@ -1,0 +1,25 @@
+class Solution {
+public:
+    bool isSameTree(TreeNode* p, TreeNode* q) {
+        //base case
+        if(p==NULL && q==NULL)
+            return true;
+        
+        else if(p==NULL && q!=NULL)
+            return false;
+        
+        else if(p!=NULL && q==NULL)
+            return false;
+        
+        else{
+            //we came to this block meaning neither p nor q is null
+            bool left=isSameTree(p->left, q->left);
+            bool right=isSameTree(p->right, q->right);
+            bool current=p->val==q->val;
+            if(left && right && current)
+            return true;
+            else 
+            return false;
+        }
+    }
+};
